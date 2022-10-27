@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     let scrollView = UIScrollView()
     let contentView = UIView()
     
+    /// All views below should be removed to suit developer's design
     lazy var backButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
@@ -52,19 +53,25 @@ class ViewController: UIViewController {
     }
     
     func constraintViews() {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        /// ScrollView and Contentview configuration, can be edited to developer's discretion
+        scrollView.backgroundColor = UIColor.white
+        scrollView.showsVerticalScrollIndicator = false
+        
+        /// Adition of scrollView and contentView to super view
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        
+        /// All views should be added as contentview's subview
         contentView.addSubview(backButton)
         contentView.addSubview(headerLabel)
         contentView.addSubview(proceedButton)
         
-        scrollView.backgroundColor = UIColor.white
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.showsVerticalScrollIndicator = false
-        
+        /// Constraints
         NSLayoutConstraint.activate([
-            
+            /// It's advisable to not touch these scroll view and content view's constraints
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
             scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 25),
@@ -75,6 +82,7 @@ class ViewController: UIViewController {
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
+            /// A view has to be added to content view's top anchor, here, it is the back button
             backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             backButton.heightAnchor.constraint(equalToConstant: 28),
@@ -83,11 +91,12 @@ class ViewController: UIViewController {
             headerLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
             headerLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
-            proceedButton.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 1300),
+            proceedButton.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 800),
             proceedButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             proceedButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9),
             proceedButton.heightAnchor.constraint(equalToConstant: 40),
             
+            /// A view has to be attached to the bottom anchor of the scroll view
             proceedButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40),
         ])
     }
