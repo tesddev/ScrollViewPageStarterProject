@@ -13,16 +13,6 @@ class ViewController: UIViewController {
     let contentView = UIView()
     
     /// All views below should be removed to suit developer's design
-    lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
-        button.tintColor = .black
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        button.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +55,6 @@ class ViewController: UIViewController {
         scrollView.addSubview(contentView)
         
         /// All views should be added as contentview's subview
-        contentView.addSubview(backButton)
         contentView.addSubview(headerLabel)
         contentView.addSubview(proceedButton)
         
@@ -83,12 +72,7 @@ class ViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
             /// A view has to be added to content view's top anchor, here, it is the back button
-            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            backButton.heightAnchor.constraint(equalToConstant: 28),
-            backButton.widthAnchor.constraint(equalToConstant: 28),
-            
-            headerLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            headerLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             headerLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             proceedButton.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 800),
