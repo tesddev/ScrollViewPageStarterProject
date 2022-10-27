@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Personal Shopping"
+        label.text = "Tes' ScrollView"
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 3
         return label
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     
     lazy var proceedButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Proceed to Checkout", for: .normal)
+        button.setTitle("Ok", for: .normal)
         button.clipsToBounds = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.layer.cornerRadius = 4
