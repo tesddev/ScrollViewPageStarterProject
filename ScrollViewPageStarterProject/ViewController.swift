@@ -84,9 +84,6 @@ class ViewController: UIViewController {
             proceedButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40),
         ])
     }
-    @objc func didTapBackButton() {
-        navigationController?.popViewController(animated: true)
-    }
     @objc func didTapLoginButton() {
         print("login successful")
     }
