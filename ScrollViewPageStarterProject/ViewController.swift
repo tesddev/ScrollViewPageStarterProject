@@ -39,22 +39,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
+        configureScrollView()
         constraintViews()
     }
     
-    func constraintViews() {
+    func configureScrollView(){
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
         /// ScrollView and Contentview configuration, can be edited to developer's discretion
         scrollView.backgroundColor = UIColor.white
         scrollView.showsVerticalScrollIndicator = false
-        
+    }
+    
+    func constraintViews() {
         /// Adition of scrollView and contentView to super view
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        /// All views should be added as contentview's subview
+        /// All views should be added as contentview's subview, except the ones that won't scroll
         contentView.addSubview(headerLabel)
         contentView.addSubview(proceedButton)
         
@@ -63,7 +66,7 @@ class ViewController: UIViewController {
             /// It's advisable to not touch these scroll view and content view's constraints
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
             scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 25),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
